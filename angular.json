@@ -44,7 +44,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/apps/flight-app",
+            "outputPath": "dist/flight-app/browser",
             "index": "apps/flight-app/src/index.html",
             "main": "apps/flight-app/src/main.ts",
             "polyfills": "apps/flight-app/src/polyfills.ts",
@@ -133,6 +133,65 @@
             "jestConfig": "apps/flight-app/jest.config.js",
             "passWithNoTests": true
           }
+        },
+        "server": {
+          "builder": "@angular-devkit/build-angular:server",
+          "options": {
+            "outputPath": "dist/flight-app/server",
+            "main": "apps/flight-app/server.ts",
+            "tsConfig": "apps/flight-app/tsconfig.server.json",
+            "optimization": false,
+            "sourceMap": true,
+            "extractLicenses": false
+          },
+          "configurations": {
+            "production": {
+              "outputHashing": "media",
+              "fileReplacements": [
+                {
+                  "replace": "apps/flight-app/src/environments/environment.ts",
+                  "with": "apps/flight-app/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "sourceMap": false,
+              "extractLicenses": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve-ssr": {
+          "builder": "@nguniversal/builders:ssr-dev-server",
+          "configurations": {
+            "development": {
+              "browserTarget": "flight-app:build:development",
+              "serverTarget": "flight-app:server:development"
+            },
+            "production": {
+              "browserTarget": "flight-app:build:production",
+              "serverTarget": "flight-app:server:production"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "prerender": {
+          "builder": "@nguniversal/builders:prerender",
+          "options": {
+            "routes": [
+              "/"
+            ]
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "flight-app:build:production",
+              "serverTarget": "flight-app:server:production"
+            },
+            "development": {
+              "browserTarget": "flight-app:build:development",
+              "serverTarget": "flight-app:server:development"
+            }
+          },
+          "defaultConfiguration": "production"
         }
       }
     },

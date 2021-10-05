@@ -17,7 +17,7 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 
 @NgModule({
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
     HttpClientModule,
     FlightBookingModule,
 
@@ -26,7 +26,9 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 
     FlightLibModule.forRoot(),
     SharedModule.forRoot(),
-    RouterModule.forRoot(APP_ROUTES)
+    RouterModule.forRoot(APP_ROUTES, {
+    initialNavigation: 'enabled'
+})
   ],
   declarations: [AppComponent, SidebarComponent, NavbarComponent, HomeComponent, BasketComponent],
   providers: [],
