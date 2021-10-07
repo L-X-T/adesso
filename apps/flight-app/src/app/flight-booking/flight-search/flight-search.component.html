@@ -15,10 +15,12 @@
                minlength="3"
                maxlength="15"
                pattern="[a-zA-ZäÄöÖüÜß ]*"
-               [city]="['Hamburg', 'Graz', 'Berlin', 'Wien', 'Zürich']">
+               [city]="['Hamburg', 'Graz', 'Berlin', 'Wien', 'Zürich']"
+               asyncCity>
       </div>
 
-      <flight-validation-errors [errors]="form?.controls['from']?.errors"></flight-validation-errors>
+      <flight-validation-errors [errors]="form?.controls['from']?.errors"
+                                [pending]="form?.controls['from']?.pending"></flight-validation-errors>
 
       <div class="form-group">
         <label>{{ 'flight-booking.flight-search.to' | translate }}:</label>

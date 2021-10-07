@@ -7,4 +7,5 @@ import { Component, Input } from '@angular/core';
 })
 export class FlightValidationErrorsComponent {
   @Input() errors: any;
+  @Input() pending = false;
 }

@@ -17,3 +17,11 @@
 <div *ngIf="errors && errors['city']">
   This city is invalid.
 </div>
+
+<div style="color: darkgrey" *ngIf="pending">
+  ... Executing Async Validator ...
+</div>
+
+<div *ngIf="errors && errors['asyncCity']">
+  This city has no flights.
+</div>
