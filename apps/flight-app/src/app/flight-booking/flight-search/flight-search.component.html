@@ -15,7 +15,7 @@
                minlength="3"
                maxlength="15"
                pattern="[a-zA-ZäÄöÖüÜß ]*"
-               city>
+               [city]="['Hamburg', 'Graz', 'Berlin', 'Wien', 'Zürich']">
       </div>
 
       <flight-validation-errors [errors]="form?.controls['from']?.errors"></flight-validation-errors>
@@ -29,7 +29,7 @@
                minlength="3"
                maxlength="15"
                pattern="[a-zA-ZäÄöÖüÜß ]*"
-               city>
+               [city]="['Hamburg', 'Graz', 'Berlin', 'Wien', 'Zürich']">
       </div>
 
       <flight-validation-errors [errors]="form?.controls['to']?.errors"></flight-validation-errors>

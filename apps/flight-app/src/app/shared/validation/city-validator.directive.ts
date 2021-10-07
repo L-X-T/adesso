@@ -1,4 +1,4 @@
-import { Directive } from '@angular/core';
+import { Directive, Input } from '@angular/core';
 import { AbstractControl, NG_VALIDATORS, ValidationErrors, Validator } from '@angular/forms';
 
 @Directive({
@@ -12,8 +12,11 @@ import { AbstractControl, NG_VALIDATORS, ValidationErrors, Validator } from '@an
   ]
 })
 export class CityValidatorDirective implements Validator {
+  @Input() city: string[] = [];
+
   validate(control: AbstractControl): ValidationErrors | null {
-    const validCities: string[] = ['Hamburg', 'Graz', 'Berlin', 'Wien'];
+    const validCities = this.city.length ? this.city : ['Hamburg', 'Graz', 'Berlin', 'Wien'];
+
     if (control.value && validCities.indexOf(control.value) === -1) {
       return {
         city: {
