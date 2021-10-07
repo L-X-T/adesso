@@ -13,7 +13,7 @@
 
 In this exercise, you will create a reactive form for editing flights.
 
-1. **If** you do not have a ``FlugEditComponent`` yet: Create a ``FlugEditComponent`` in the ``FlightBookingModule`` and call it up in the template of the ``FlightSearchComponent``.
+1. **If** you do not have a ``FlightEditComponent`` yet: Create a ``FlightEditComponent`` in the ``FlightBookingModule`` and call it up in the template of the ``FlightSearchComponent``.
 
 2. Import the ``ReactiveFormsModule`` into your ``FlightBookingModule``.
 
