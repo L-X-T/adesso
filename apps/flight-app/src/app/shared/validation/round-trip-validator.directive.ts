@@ -1,4 +1,4 @@
-import { Directive } from '@angular/core';
+import { Directive, Input } from '@angular/core';
 import { AbstractControl, FormGroup, NG_VALIDATORS, ValidationErrors } from '@angular/forms';
 
 @Directive({
@@ -12,10 +12,12 @@ import { AbstractControl, FormGroup, NG_VALIDATORS, ValidationErrors } from '@an
   ]
 })
 export class RoundTripValidatorDirective {
+  @Input() roundTrip: string[] = [];
+
   validate(control: AbstractControl): ValidationErrors | null {
     const group: FormGroup = control as FormGroup; // type cast
-    const fromCtrl = group.controls['from'];
-    const toCtrl = group.controls['to'];
+    const fromCtrl = this.roundTrip.length > 0 ? group.controls[this.roundTrip[0]] : group.controls['from'];
+    const toCtrl = this.roundTrip.length > 1 ? group.controls[this.roundTrip[1]] : group.controls['to'];
 
     if (!fromCtrl || !toCtrl) return {};
 
