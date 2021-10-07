@@ -17,7 +17,7 @@
                pattern="[a-zA-ZäÄöÖüÜß ]*">
       </div>
 
-      <pre>{{form?.controls['from']?.errors | json}}</pre>
+      <flight-validation-errors [errors]="form?.controls['from']?.errors"></flight-validation-errors>
 
       <div class="form-group">
         <label>{{ 'flight-booking.flight-search.to' | translate }}:</label>
@@ -30,7 +30,7 @@
                pattern="[a-zA-ZäÄöÖüÜß ]*">
       </div>
 
-      <pre>{{form?.controls['to']?.errors | json}}</pre>
+      <flight-validation-errors [errors]="form?.controls['to']?.errors"></flight-validation-errors>
 
       <div class="form-group">
         <label>

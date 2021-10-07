@@ -15,6 +15,7 @@ import * as fromFlightBooking from './+state/flight-booking.reducer';
 import { EffectsModule } from '@ngrx/effects';
 import { FlightBookingEffects } from './+state/flight-booking.effects';
 import { TranslateModule } from '@ngx-translate/core';
+import { FlightValidationErrorsComponent } from './flight-validation-errors/flight-validation-errors.component';
 
 @NgModule({
   imports: [
@@ -32,7 +33,8 @@ import { TranslateModule } from '@ngx-translate/core';
     PassengerSearchComponent,
     FlightEditComponent,
     FlightBookingComponent,
-    AirportComponent
+    AirportComponent,
+    FlightValidationErrorsComponent
   ],
   exports: [FlightSearchComponent]
 })
